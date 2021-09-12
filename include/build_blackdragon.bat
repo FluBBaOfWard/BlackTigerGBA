@@ -1,0 +1,1 @@
+copy /b ..\GBABIN\blktiger.gba+btsplash.raw+header2.dat+blkdrgon.5e+blkdrgon.6e+blkdrgon.8e+blkdrgon.9e+blkdrgon.10e+blkdrgon.2n+blkdrgon.5b+blkdrgon.4b+blkdrgon.9b+blkdrgon.8b+bd-08.5a+bd-07.4a+bd-10.9a+bd-09.8a BlackTiger.gba

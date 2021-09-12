@@ -1,0 +1,8 @@
+BlackTigerGBA.xcodeproj/project.xcworkspace/xcuserdata
+BlackTigerGBA.xcodeproj/xcuserdata
+build
+*.gba
+*.elf
+*.zip
+*.sav
+include/blktiger

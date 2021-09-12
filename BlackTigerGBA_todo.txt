@@ -1,0 +1,25 @@
+BlackTigerGBA To do
+-------------------
+
+
+Misc:
+	Add dipswitches to Savestate.
+	Fix filenames in FileHandling.c
+	Lockout coins?
+	Fix saving of settings.
+
+Graphic:
+	Screen Flip support.
+	Tile vs. sprite priority?
+
+CPU:
+	Timing?
+
+GUI:
+
+Sound:
+	Coin sounds.
+	Emulate sound-cpu + soundchip?
+
+Games:
+

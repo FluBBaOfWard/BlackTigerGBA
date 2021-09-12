@@ -1,0 +1,12 @@
+
+# output bitmap
+-gb
+
+# output 16bit
+-gB 16
+
+# no map output
+-m!
+
+# no palette output
+-p!

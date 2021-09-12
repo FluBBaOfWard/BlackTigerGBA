@@ -1,0 +1,12 @@
+[submodule "source/Shared"]
+	path = source/Shared
+	url = https://github.com/FluBBaOfWard/GBA_Shared.git
+[submodule "source/ARMZ80"]
+	path = source/ARMZ80
+	url = https://github.com/FluBBaOfWard/ARMZ80.git
+[submodule "source/BlackTigerVideo"]
+	path = source/BlackTigerVideo
+	url = https://github.com/FluBBaOfWard/BlackTigerVideo.git
+[submodule "source/YM2203"]
+	path = source/YM2203
+	url = https://github.com/FluBBaOfWard/YM2203.git
