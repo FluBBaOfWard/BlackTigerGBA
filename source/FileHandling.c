@@ -67,9 +67,9 @@ int loadSettings() {
 	g_dipSwitch0 = cfg.dipSwitch0;
 	g_dipSwitch1 = cfg.dipSwitch1;
 	g_dipSwitch2 = cfg.dipSwitch2;
-	g_scaling    = cfg.scaling&1;
-	g_flicker    = cfg.flicker&1;
-	g_gammaValue = cfg.gammaValue;
+	gScaling     = cfg.scaling&1;
+	gFlicker     = cfg.flicker&1;
+	gGammaValue  = cfg.gammaValue;
 	emuSettings  = cfg.emuSettings & ~EMUSPEED_MASK; // Clear speed setting.
 	sleepTime    = cfg.sleepTime;
 	joyCfg       = (joyCfg&~0x400)|((cfg.controller&1)<<10);
@@ -85,9 +85,9 @@ void saveSettings() {
 	cfg.dipSwitch0  = g_dipSwitch0;
 	cfg.dipSwitch1  = g_dipSwitch1;
 	cfg.dipSwitch2  = g_dipSwitch2;
-	cfg.scaling     = g_scaling&1;
-	cfg.flicker     = g_flicker&1;
-	cfg.gammaValue  = g_gammaValue;
+	cfg.scaling     = gScaling&1;
+	cfg.flicker     = gFlicker&1;
+	cfg.gammaValue  = gGammaValue;
 	cfg.emuSettings = emuSettings & ~EMUSPEED_MASK; // Clear speed setting.
 	cfg.sleepTime   = sleepTime;
 	cfg.controller  = (joyCfg>>10)&1;

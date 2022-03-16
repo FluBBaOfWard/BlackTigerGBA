@@ -141,5 +141,5 @@ static void setupGraphics() {
 }
 
 void setupMenuPalette() {
-	convertPalette(&EMUPALBUFF[0xE0], guiPalette, 32, g_gammaValue);
+	convertPalette(&EMUPALBUFF[0xE0], guiPalette, 32, gGammaValue);
 }

@@ -15,10 +15,10 @@
 	.global EMUPALBUFF
 	.global gfxState
 //	.global oamBufferReady
-	.global g_flicker
-	.global g_twitch
-	.global g_scaling
-	.global g_gfxMask
+	.global gFlicker
+	.global gTwitch
+	.global gScaling
+	.global gGfxMask
 	.global vblIrqHandler
 	.global yStart
 
@@ -46,7 +46,7 @@ gfxInit:					;@ Called from machineInit
 	adr r0,scaleParms
 	bl setupSpriteScaling
 
-	ldr r0,=g_gammaValue
+	ldr r0,=gGammaValue
 	ldrb r0,[r0]
 	bl paletteInit				;@ Do palette mapping
 
@@ -156,7 +156,7 @@ vblIrqHandler:
 	bl vblSound1
 	bl calculateFPS
 
-	ldrb r0,g_scaling
+	ldrb r0,gScaling
 	cmp r0,#UNSCALED
 	moveq r6,#0
 	ldrne r6,=0x80000000 + ((GAME_HEIGHT-SCREEN_HEIGHT)*0x10000) / (SCREEN_HEIGHT-1)		;@ NDS 0x2B10 (was 0x2AAB)
@@ -167,9 +167,9 @@ vblIrqHandler:
 	orr r4,r4,#(GAME_WIDTH-SCREEN_WIDTH)/2
 	ldr r2,scrollTemp
 
-	ldr r0,g_flicker
+	ldr r0,gFlicker
 	eors r0,r0,r0,lsl#31
-	str r0,g_flicker
+	str r0,gFlicker
 	addpl r6,r6,r6,lsl#16
 
 	ldr r3,=SCROLLBUFF
@@ -215,7 +215,7 @@ scrolLoop2:
 	ldrb r3,[btptr,#btIrqControl]
 
 	mov r0,#0x003B
-	ldrb r1,g_gfxMask
+	ldrb r1,gGfxMask
 	bic r0,r0,r1
 	tst r3,#0x80				;@ Chr on?
 	bicne r0,r0,#0x01
@@ -232,12 +232,12 @@ scrolLoop2:
 
 
 ;@----------------------------------------------------------------------------
-g_flicker:		.byte 1
+gFlicker:		.byte 1
 				.space 2
-g_twitch:		.byte 0
+gTwitch:		.byte 0
 
-g_scaling:		.byte SCALED
-g_gfxMask:		.byte 0
+gScaling:		.byte SCALED
+gGfxMask:		.byte 0
 yStart:			.byte 0
 				.byte 0
 scrollTemp:		.long 0
