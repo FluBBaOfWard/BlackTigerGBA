@@ -11,7 +11,7 @@
 #include "ARMZ80/Version.h"
 #include "BlackTigerVideo/Version.h"
 
-#define EMUVERSION "V0.1.5 2021-09-12"
+#define EMUVERSION "V0.1.6 2022-08-24"
 
 const fptr fnMain[] = {nullUI, subUI, subUI, subUI, subUI, subUI, subUI, subUI, subUI};
 
@@ -25,9 +25,9 @@ const fptr fnList6[] = {coinASet, coinBSet, difficultSet, continueSet, cabinetSe
 const fptr fnList7[] = {uiDummy};
 const fptr fnList8[] = {quickSelectGame, quickSelectGame, quickSelectGame, quickSelectGame, quickSelectGame, quickSelectGame};
 const fptr *const fnListX[] = {fnList0, fnList1, fnList2, fnList3, fnList4, fnList5, fnList6, fnList7, fnList8};
-const u8 menuXitems[] = {ARRSIZE(fnList0), ARRSIZE(fnList1), ARRSIZE(fnList2), ARRSIZE(fnList3), ARRSIZE(fnList4), ARRSIZE(fnList5), ARRSIZE(fnList6), ARRSIZE(fnList7), ARRSIZE(fnList8)};
-const fptr drawuiX[] = {uiNullNormal, uiMainMenu, uiFile, uiController, uiDisplay, uiSettings, uiDipswitches, uiAbout, uiLoadGame};
-const u8 menuXback[] = {0,0,1,1,1,1,1,1,2};
+const u8 menuXItems[] = {ARRSIZE(fnList0), ARRSIZE(fnList1), ARRSIZE(fnList2), ARRSIZE(fnList3), ARRSIZE(fnList4), ARRSIZE(fnList5), ARRSIZE(fnList6), ARRSIZE(fnList7), ARRSIZE(fnList8)};
+const fptr drawUIX[] = {uiNullNormal, uiMainMenu, uiFile, uiController, uiDisplay, uiSettings, uiDipswitches, uiAbout, uiLoadGame};
+const u8 menuXBack[] = {0,0,1,1,1,1,1,1,2};
 
 u8 gGammaValue = 0;
 
@@ -64,7 +64,7 @@ void enterGUI() {
 
 /// This is called going from ui to emu.
 void exitGUI() {
-	if (g_debugSet) {
+	if (gDebugSet) {
 		setPaletteCount(15);
 	}
 	else {
@@ -147,7 +147,7 @@ void uiSettings() {
 	drawSubItem("Autoload State: ", autoTxt[(emuSettings>>2)&1]);
 	drawSubItem("Autosave Settings: ", autoTxt[(emuSettings>>9)&1]);
 	drawSubItem("Autopause Game: ", autoTxt[emuSettings&1]);
-	drawSubItem("Debug Output: ", autoTxt[g_debugSet&1]);
+	drawSubItem("Debug Output: ", autoTxt[gDebugSet&1]);
 	drawSubItem("Autosleep: ", sleepTxt[(emuSettings>>4)&3]);
 }
 

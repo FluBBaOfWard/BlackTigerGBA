@@ -1,4 +1,4 @@
-# BlackTigerGBA V0.1.5
+# BlackTigerGBA V0.1.6
 
 This is a Black Tiger / Black Dragon - Arcade emulator for the GBA.
 

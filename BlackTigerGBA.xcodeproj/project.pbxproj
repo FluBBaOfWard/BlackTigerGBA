@@ -10,6 +10,10 @@
 		359247301E4E695B00A12B3E /* io.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = io.s; sourceTree = "<group>"; };
 		35BA496A1886BBE3006870D9 /* Main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Main.c; sourceTree = "<group>"; };
 		746D78E114ED9A8400CC738F /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
+		9C175BCC28B5683800293DA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9C175BCD28B5687100293DA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9C175BCE28B5688400293DA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9C175BCF28B5689200293DA7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9C28401A232D4E7B00C9DCFF /* gba_asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gba_asm.h; sourceTree = "<group>"; };
 		9C3D5ADA25E2FE1500E8CD56 /* AY38910ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AY38910ToDo.txt; sourceTree = "<group>"; };
 		9C3D5AEA25E82D0300E8CD56 /* EmuFont.grit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmuFont.grit; sourceTree = "<group>"; };
@@ -62,11 +66,8 @@
 		9C8F342224929C8200996E5A /* AY38910.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = AY38910.s; sourceTree = "<group>"; };
 		9C8F342324929C8200996E5A /* AY38910.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AY38910.h; sourceTree = "<group>"; };
 		9C8F342424929C8200996E5A /* AY38910.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = AY38910.i; sourceTree = "<group>"; };
-		9C8F342524929C8200996E5A /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9C8F342624929C8200996E5A /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
-		9C8F342724929C8200996E5A /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9C8F342824929C8200996E5A /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
-		9C99548F2634103D00CE2B94 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		9CBEE0D426EE3F640095347A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9CBEE0D526EE42690095347A /* EmuSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmuSettings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,8 +107,8 @@
 		9C41DD9F22C7ECD200BD4C64 /* ARMZ80 */ = {
 			isa = PBXGroup;
 			children = (
-				9C99548F2634103D00CE2B94 /* ReadMe.txt */,
 				9C41DDA322C7ECD200BD4C64 /* ARMZ80_todo.txt */,
+				9C175BCC28B5683800293DA7 /* README.md */,
 				9C5082AB25E17CEB00A8E1BA /* History.txt */,
 				9C5082AC25E17CEB00A8E1BA /* Version.h */,
 				9C5082AE25E1963300A8E1BA /* ARMZ80.h */,
@@ -136,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				9C67263E24A8999600EFD831 /* BlackTigerVideo_todo.txt */,
+				9C175BCD28B5687100293DA7 /* README.md */,
 				9C67263F24A8999600EFD831 /* History.txt */,
 				9C67263A24A8999600EFD831 /* Version.h */,
 				9C67263D24A8999600EFD831 /* BlackTigerVideo.h */,
@@ -149,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				9C8F342024929C8100996E5A /* AY38910 */,
-				9C8F342724929C8200996E5A /* ReadMe.txt */,
+				9C175BCE28B5688400293DA7 /* README.md */,
 				9C8F342824929C8200996E5A /* History.txt */,
 				9C8F341F24929C8100996E5A /* Version.h */,
 				9C8F341E24929C8100996E5A /* YM2203.h */,
@@ -163,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3D5ADA25E2FE1500E8CD56 /* AY38910ToDo.txt */,
-				9C8F342524929C8200996E5A /* ReadMe.txt */,
+				9C175BCF28B5689200293DA7 /* README.md */,
 				9C8F342624929C8200996E5A /* History.txt */,
 				9C8F342124929C8100996E5A /* Version.h */,
 				9C8F342324929C8200996E5A /* AY38910.h */,
