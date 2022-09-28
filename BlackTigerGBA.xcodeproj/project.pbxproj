@@ -33,7 +33,6 @@
 		9C41DDC222C7EEB300BD4C64 /* Gfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gfx.h; sourceTree = "<group>"; };
 		9C41DDC322C7EEB300BD4C64 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
 		9C41DDC622C7EEB300BD4C64 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
-		9C50825425D6774200A8E1BA /* Equates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equates.h; sourceTree = "<group>"; };
 		9C50825525D6774200A8E1BA /* Emubase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emubase.h; sourceTree = "<group>"; };
 		9C5082AB25E17CEB00A8E1BA /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
 		9C5082AC25E17CEB00A8E1BA /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
@@ -183,11 +182,12 @@
 				9C8F341B24929C8100996E5A /* YM2203 */,
 				9C41DDB422C7ECF200BD4C64 /* Shared */,
 				9C50825525D6774200A8E1BA /* Emubase.h */,
-				9C50825425D6774200A8E1BA /* Equates.h */,
 				9C41DD9822C7E4F100BD4C64 /* Main.h */,
 				35BA496A1886BBE3006870D9 /* Main.c */,
 				9C41DD9722C7E4F100BD4C64 /* GUI.h */,
 				9C41DD9922C7E4F100BD4C64 /* GUI.c */,
+				9C41DDC022C7EEB300BD4C64 /* FileHandling.h */,
+				9C41DDBF22C7EEB300BD4C64 /* FileHandling.c */,
 				9C7BB93625F3D6E700EA9C9C /* BlackTiger.h */,
 				9C7BB93525F3D6E700EA9C9C /* BlackTiger.c */,
 				9C8F341924929A9800996E5A /* Cart.h */,
@@ -201,8 +201,6 @@
 				9C41DDC222C7EEB300BD4C64 /* Gfx.h */,
 				9C8F34132492951E00996E5A /* Gfx.s */,
 				9C8F341824929A7500996E5A /* Memory.s */,
-				9C41DDC022C7EEB300BD4C64 /* FileHandling.h */,
-				9C41DDBF22C7EEB300BD4C64 /* FileHandling.c */,
 			);
 			path = source;
 			sourceTree = "<group>";

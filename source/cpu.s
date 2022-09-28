@@ -57,11 +57,12 @@ runStart:
 ;@----------------------------------------------------------------------------
 capcomFrameLoop:
 ;@----------------------------------------------------------------------------
+	mov r0,#CYCLE_PSL
+	bl Z80RunXCycles
 	ldr btptr,=blkTgrVideo_0
 	bl doScanline
 	cmp r0,#0
-	addne cycles,cycles,#CYCLE_PSL<<CYC_SHIFT
-	bne Z80CheckIRQs
+	bne capcomFrameLoop
 	b capcomEnd
 ;@----------------------------------------------------------------------------
 
@@ -110,11 +111,8 @@ cpuReset:		;@ Called by loadCart/resetGame
 	adr r4,cpuMapData
 	bl mapZ80Memory
 
-	ldr r0,=capcomFrameLoop
-	str r0,[z80optbl,#z80NextTimeout]
-	str r0,[z80optbl,#z80NextTimeout_]
-
-	mov r0,#0
+	mov r0,z80optbl
+	mov r1,#0
 	bl Z80Reset
 	ldmfd sp!,{lr}
 	bx lr
