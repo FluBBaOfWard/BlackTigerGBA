@@ -3,7 +3,7 @@
 #include "Main.h"
 #include "Shared/EmuMenu.h"
 #include "Shared/AsmExtra.h"
-#include "GUI.h"
+#include "Gui.h"
 #include "EmuFont.h"
 #include "Cart.h"
 #include "cpu.h"
@@ -83,7 +83,8 @@ static void checkTimeOut() {
 //---------------------------------------------------------------------------------
 	if (EMUinput) {
 		sleepTimer = sleepTime;
-	} else {
+	}
+	else {
 		sleepTimer--;
 		if (sleepTimer < 0) {
 			sleepTimer = sleepTime;
@@ -98,13 +99,16 @@ void setEmuSpeed(int speed) {
 	if (speed == 0) {			// Normal Speed
 		waitMaskIn = 0x00;
 		waitMaskOut = 0x00;
-	} else if (speed == 1) {	// Double speed
+	}
+	else if (speed == 1) {	// Double speed
 		waitMaskIn = 0x00;
 		waitMaskOut = 0x01;
-	} else if (speed == 2) {	// Max speed (4x)
+	}
+	else if (speed == 2) {	// Max speed (4x)
 		waitMaskIn = 0x00;
 		waitMaskOut = 0x03;
-	} else if (speed == 3) {	// 50% speed
+	}
+	else if (speed == 3) {	// 50% speed
 		waitMaskIn = 0x01;
 		waitMaskOut = 0x00;
 	}

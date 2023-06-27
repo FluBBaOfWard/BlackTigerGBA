@@ -6,8 +6,9 @@
 
 #define CYCLE_PSL (254)
 
-	.global cpuReset
 	.global run
+	.global stepFrame
+	.global cpuReset
 	.global frameTotal
 	.global waitMaskIn
 	.global waitMaskOut
@@ -19,7 +20,7 @@
 	.section .ewram,"ax"
 	.align 2
 ;@----------------------------------------------------------------------------
-run:		;@ Return after 1 frame
+run:						;@ Return after X frame(s)
 	.type   run STT_FUNC
 ;@----------------------------------------------------------------------------
 	ldrh r0,waitCountIn
@@ -48,8 +49,8 @@ runStart:
 
 	bl refreshEMUjoypads		;@ Z=1 if communication ok
 
-	ldr z80optbl,=Z80OpTable
-	add r0,z80optbl,#z80Regs
+	ldr z80ptr,=Z80OpTable
+	add r0,z80ptr,#z80Regs
 	ldmia r0,{z80f-z80pc,z80sp}	;@ Restore Z80 state
 	b capcomFrameLoop
 
@@ -68,7 +69,7 @@ capcomFrameLoop:
 
 	.section .ewram,"ax"
 capcomEnd:
-	add r0,z80optbl,#z80Regs
+	add r0,z80ptr,#z80Regs
 	stmia r0,{z80f-z80pc,z80sp}	;@ Save Z80 state
 
 	ldr r1,=fpsValue
@@ -90,12 +91,40 @@ capcomEnd:
 
 ;@----------------------------------------------------------------------------
 cyclesPerScanline:	.long 0
-frameTotal:			.long 0		;@ Let ui.c see frame count for savestates
+frameTotal:			.long 0		;@ Let Gui.c see frame count for savestates
 waitCountIn:		.byte 0
 waitMaskIn:			.byte 0
 waitCountOut:		.byte 0
 waitMaskOut:		.byte 0
 
+;@----------------------------------------------------------------------------
+stepFrame:					;@ Return after 1 frame
+	.type   stepFrame STT_FUNC
+;@----------------------------------------------------------------------------
+	stmfd sp!,{r4-r11,lr}
+
+	ldr z80ptr,=Z80OpTable
+	add r0,z80ptr,#z80Regs
+	ldmia r0,{z80f-z80pc,z80sp}	;@ Restore Z80 state
+;@----------------------------------------------------------------------------
+capcomStepLoop:
+;@----------------------------------------------------------------------------
+	mov r0,#CYCLE_PSL
+	bl Z80RunXCycles
+	ldr btptr,=blkTgrVideo_0
+	bl doScanline
+	cmp r0,#0
+	bne capcomStepLoop
+;@----------------------------------------------------------------------------
+	add r0,z80ptr,#z80Regs
+	stmia r0,{z80f-z80pc,z80sp}	;@ Save Z80 state
+
+	ldr r1,frameTotal
+	add r1,r1,#1
+	str r1,frameTotal
+
+	ldmfd sp!,{r4-r11,lr}
+	bx lr
 ;@----------------------------------------------------------------------------
 cpuReset:		;@ Called by loadCart/resetGame
 ;@----------------------------------------------------------------------------
@@ -106,12 +135,12 @@ cpuReset:		;@ Called by loadCart/resetGame
 	str r0,cyclesPerScanline
 
 ;@--------------------------------------
-	ldr z80optbl,=Z80OpTable
+	ldr z80ptr,=Z80OpTable
 
 	adr r4,cpuMapData
 	bl mapZ80Memory
 
-	mov r0,z80optbl
+	mov r0,z80ptr
 	mov r1,#0
 	bl Z80Reset
 	ldmfd sp!,{lr}

@@ -18,9 +18,9 @@
 		9C3D5ADA25E2FE1500E8CD56 /* AY38910ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AY38910ToDo.txt; sourceTree = "<group>"; };
 		9C3D5AEA25E82D0300E8CD56 /* EmuFont.grit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmuFont.grit; sourceTree = "<group>"; };
 		9C3D5AEB25E82D0300E8CD56 /* EmuFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmuFont.png; sourceTree = "<group>"; };
-		9C41DD9722C7E4F100BD4C64 /* GUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUI.h; sourceTree = "<group>"; };
+		9C41DD9722C7E4F100BD4C64 /* Gui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gui.h; sourceTree = "<group>"; };
 		9C41DD9822C7E4F100BD4C64 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
-		9C41DD9922C7E4F100BD4C64 /* GUI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GUI.c; sourceTree = "<group>"; };
+		9C41DD9922C7E4F100BD4C64 /* Gui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Gui.c; sourceTree = "<group>"; };
 		9C41DD9E22C7EADB00BD4C64 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
 		9C41DDA322C7ECD200BD4C64 /* ARMZ80_todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ARMZ80_todo.txt; sourceTree = "<group>"; };
 		9C41DDB522C7ECF200BD4C64 /* EmuMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmuMenu.h; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 				9C50825525D6774200A8E1BA /* Emubase.h */,
 				9C41DD9822C7E4F100BD4C64 /* Main.h */,
 				35BA496A1886BBE3006870D9 /* Main.c */,
-				9C41DD9722C7E4F100BD4C64 /* GUI.h */,
-				9C41DD9922C7E4F100BD4C64 /* GUI.c */,
+				9C41DD9722C7E4F100BD4C64 /* Gui.h */,
+				9C41DD9922C7E4F100BD4C64 /* Gui.c */,
 				9C41DDC022C7EEB300BD4C64 /* FileHandling.h */,
 				9C41DDBF22C7EEB300BD4C64 /* FileHandling.c */,
 				9C7BB93625F3D6E700EA9C9C /* BlackTiger.h */,
@@ -208,8 +208,8 @@
 		A4E891981889C882007ED6D7 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
-				9C7BB93D25F7867400EA9C9C /* splash.png */,
 				9C7BB93E25F786AD00EA9C9C /* splash.grit */,
+				9C7BB93D25F7867400EA9C9C /* splash.png */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
