@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#define GAME_COUNT (7)
+
 /**
  * This saves a complete state of the running machine
  * to the statePtr.

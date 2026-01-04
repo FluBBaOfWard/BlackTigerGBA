@@ -8,17 +8,17 @@
 
 	.global joyCfg
 	.global EMUinput
-	.global g_dipSwitch0
-	.global g_dipSwitch1
-	.global g_dipSwitch2
-	.global g_dipSwitch3
+	.global gDipSwitch0
+	.global gDipSwitch1
+	.global gDipSwitch2
+	.global gDipSwitch3
 	.global coinCounter0
 	.global coinCounter1
 
 	.syntax unified
 	.arm
 
-	.section .ewram,"ax"
+	.section .ewram, "ax", %progbits
 	.align 2
 
 ;@----------------------------------------------------------------------------
@@ -72,10 +72,10 @@ joy1state:	.byte 0
 joy2state:	.byte 0
 rlud2lrud:		.byte 0x00,0x01,0x02,0x03, 0x08,0x09,0x0a,0x0b, 0x04,0x05,0x06,0x07, 0x0c,0x0d,0x0e,0x0f
 rlud2lrud180:	.byte 0x00,0x01,0x02,0x03, 0x08,0x09,0x0a,0x0b, 0x04,0x05,0x06,0x07, 0x0c,0x0d,0x0e,0x0f
-g_dipSwitch0:	.byte 0
-g_dipSwitch1:	.byte 0x80		;@ Lives, cabinet & demo sound.
-g_dipSwitch2:	.byte 0
-g_dipSwitch3:	.byte 0
+gDipSwitch0:	.byte 0
+gDipSwitch1:	.byte 0x80		;@ Lives, cabinet & demo sound.
+gDipSwitch2:	.byte 0
+gDipSwitch3:	.byte 0
 coinCounter0:	.long 0
 coinCounter1:	.long 0
 
@@ -106,19 +106,19 @@ input2R:		;@ Coins, Start & Service
 ;@----------------------------------------------------------------------------
 input3R:
 ;@----------------------------------------------------------------------------
-	ldrb r0,g_dipSwitch0
+	ldrb r0,gDipSwitch0
 	eor r0,r0,#0xFF
 	bx lr
 ;@----------------------------------------------------------------------------
 input4R:
 ;@----------------------------------------------------------------------------
-	ldrb r0,g_dipSwitch1
+	ldrb r0,gDipSwitch1
 	eor r0,r0,#0xFF
 	bx lr
 ;@----------------------------------------------------------------------------
 input5R:
 ;@----------------------------------------------------------------------------
-	ldrb r0,g_dipSwitch2
+	ldrb r0,gDipSwitch2
 	eor r0,r0,#0xFF
 	bx lr
 

@@ -39,7 +39,7 @@ GRAPHICS	:=	graphics \
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-ARCH	:=	-mthumb -mthumb-interwork -march=armv4t -mcpu=arm7tdmi -mtune=arm7tdmi
+ARCH	:=	-march=armv4t -mcpu=arm7tdmi -mtune=arm7tdmi -mthumb -mthumb-interwork
 FLAGS	:=	-DGBA -DZ80_FAST -DZ80_USE_FAST_MEM
 
 ifeq ($(DEBUG),1)

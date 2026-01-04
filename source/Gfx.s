@@ -5,6 +5,15 @@
 #include "ARMZ80/ARMZ80.i"
 #include "BlackTigerVideo/BlackTigerVideo.i"
 
+	.global gFlicker
+	.global gTwitch
+	.global gScaling
+	.global gGfxMask
+	.global yStart
+	.global gfxState
+//	.global oamBufferReady
+	.global EMUPALBUFF
+
 	.global gfxInit
 	.global gfxReset
 	.global paletteInit
@@ -12,15 +21,7 @@
 	.global refreshGfx
 	.global setPaletteCount
 	.global convertGfx
-	.global EMUPALBUFF
-	.global gfxState
-//	.global oamBufferReady
-	.global gFlicker
-	.global gTwitch
-	.global gScaling
-	.global gGfxMask
 	.global vblIrqHandler
-	.global yStart
 
 	.global Z80Out
 	.global blkTgrVideo_0
@@ -66,7 +67,7 @@ gfxReset:					;@ Called with CPU reset
 	mov r1,#5					;@ 5*4
 	bl memclr_					;@ Clear GFX regs
 
-	ldr r0,=Z80SetIRQPin
+	ldr r0,=Z80SetIRQPinCurrentCpu
 	ldr r1,=blkTgrRAM_0
 	bl blkTgrReset0
 
@@ -152,51 +153,51 @@ blkTgrReset0:			;@ r0=IRQ(frameIrqFunc), r1= RAM
 vblIrqHandler:
 	.type vblIrqHandler STT_FUNC
 ;@----------------------------------------------------------------------------
-	stmfd sp!,{r4-r8,lr}
+	stmfd sp!,{r4-r6,lr}
 	bl vblSound1
 	bl calculateFPS
 
 	ldrb r0,gScaling
 	cmp r0,#UNSCALED
-	moveq r6,#0
-	ldrne r6,=0x80000000 + ((GAME_HEIGHT-SCREEN_HEIGHT)*0x10000) / (SCREEN_HEIGHT-1)		;@ NDS 0x2B10 (was 0x2AAB)
+	moveq r5,#0
+	ldrne r5,=0x80000000 + ((GAME_HEIGHT-SCREEN_HEIGHT)*0x10000) / (SCREEN_HEIGHT-1)		;@ NDS 0x2B10 (was 0x2AAB)
 	ldrbeq r4,yStart
 	movne r4,#0
 	add r4,r4,#0x10
-	mov r4,r4,lsl#16
-	orr r4,r4,#(GAME_WIDTH-SCREEN_WIDTH)/2
-	ldr r2,scrollTemp
+	mov r2,r4,lsl#16
+	orr r2,r2,#(GAME_WIDTH-SCREEN_WIDTH)/2
 
 	ldr r0,gFlicker
 	eors r0,r0,r0,lsl#31
 	str r0,gFlicker
-	addpl r6,r6,r6,lsl#16
+	addpl r5,r5,r5,lsl#16
 
-	ldr r3,=SCROLLBUFF
-	mov r1,r3
+	ldr r1,=SCROLLBUFF
+	mov r0,r1
 
+	ldr r6,scrollTemp
 	mov r12,#SCREEN_HEIGHT
 scrolLoop2:
-	add r5,r4,r2
-	stmia r3!,{r4,r5}
-	adds r6,r6,r6,lsl#16
-	addcs r4,r4,#0x10000
+	add r3,r6,r2
+	stmia r0!,{r2,r3}
+	adds r5,r5,r5,lsl#16
+	addcs r2,r2,#0x10000
 	subs r12,r12,#1
 	bne scrolLoop2
 
 
-	mov r6,#REG_BASE
-	strh r6,[r6,#REG_DMA0CNT_H]	;@ DMA0 stop
+	mov r5,#REG_BASE
+	strh r5,[r5,#REG_DMA0CNT_H]	;@ DMA0 stop
 
-	add r0,r6,#REG_DMA0SAD
+	add r0,r5,#REG_DMA0SAD
 //	mov r1,r1					;@ DMA0 src, scrolling:
 	ldmia r1!,{r3-r4}			;@ Read
-	add r2,r6,#REG_BG0HOFS		;@ DMA0 dst
+	add r2,r5,#REG_BG0HOFS		;@ DMA0 dst
 	stmia r2,{r3-r4}			;@ Set 1st values manually, HBL is AFTER 1st line
 	ldr r3,=0xA6600002			;@ noIRQ hblank 32bit repeat incsrc inc_reloaddst, 2 word
 	stmia r0,{r1-r3}			;@ DMA0 go
 
-	add r0,r6,#REG_DMA3SAD
+	add r0,r5,#REG_DMA3SAD
 
 	ldr r1,dmaOamBuffer			;@ DMA3 src, OAM transfer:
 	mov r2,#OAM					;@ DMA3 dst
@@ -223,11 +224,11 @@ scrolLoop2:
 	bicne r0,r0,#0x02
 	tst r2,#0x04				;@ Sprites on?
 	bicne r0,r0,#0x10
-	strh r0,[r6,#REG_WININ]
+	strh r0,[r5,#REG_WININ]
 
 	bl scanKeys
 	bl vblSound2
-	ldmfd sp!,{r4-r8,lr}
+	ldmfd sp!,{r4-r6,lr}
 	bx lr
 
 
@@ -384,8 +385,13 @@ Z80Out:
 blkTgrVideo_0:
 	.space blkTgrSize
 ;@----------------------------------------------------------------------------
-	.section .ewram, "ax"
 
+#ifdef GBA
+	.section .sbss				;@ This is EWRAM on GBA with devkitARM
+#else
+	.section .bss
+#endif
+	.align 2
 gfxState:
 adjustBlend:
 	.long 0
@@ -395,7 +401,6 @@ windowTop:
 	.byte 0
 	.byte 0,0
 
-	.section .sbss
 OAM_BUFFER1:
 	.space 0x400
 OAM_BUFFER2:

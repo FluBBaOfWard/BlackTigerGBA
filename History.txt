@@ -2,9 +2,13 @@ BlackTigerGBA revision history
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
-V0.1.6 - 2023-06-27 (FluBBa)
+V0.2.1 - 2026-01-04 (FluBBa)
 	Added new debug menu.
 	Better menu traversing.
+	Updated cpu core.
+
+V0.2.0 - 2021-10-16 (FluBBa)
+	Cleaned up code.
 
 V0.1.5 - 2021-03-17 (FluBBa)
 	Added load/save state.

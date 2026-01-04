@@ -49,9 +49,9 @@ int main(int argc, char **argv) {
 	irqEnable(IRQ_VBLANK);
 
 	setupGraphics();
-	machineInit();
 	setupGUI();
 	getInput();
+	machineInit();
 	loadCart(0,0);
 
 	while (1) {

@@ -12,10 +12,10 @@
 #include "Emubase.h"
 #include "Main.h"
 #include "Gui.h"
-#include "BlackTiger.h"
 #include "Cart.h"
 #include "Gfx.h"
 #include "io.h"
+#include "BlackTiger.h"
 
 static const char *const folderName = "acds";
 static const char *const settingName = "settings.cfg";
@@ -25,13 +25,11 @@ static int selectedGame = 0;
 
 static bool loadRoms(int gamenr, bool doLoad);
 
-#define GAMECOUNT (6)
-
 //---------------------------------------------------------------------------------
 int loadSettings() {
-	g_dipSwitch0 = cfg.dipSwitch0;
-	g_dipSwitch1 = cfg.dipSwitch1;
-	g_dipSwitch2 = cfg.dipSwitch2;
+	gDipSwitch0 = cfg.dipSwitch0;
+	gDipSwitch1 = cfg.dipSwitch1;
+	gDipSwitch2 = cfg.dipSwitch2;
 	gScaling     = cfg.scaling&1;
 	gFlicker     = cfg.flicker&1;
 	gGammaValue  = cfg.gammaValue;
@@ -45,9 +43,9 @@ int loadSettings() {
 }
 void saveSettings() {
 	strcpy(cfg.magic,"cfg");
-	cfg.dipSwitch0  = g_dipSwitch0;
-	cfg.dipSwitch1  = g_dipSwitch1;
-	cfg.dipSwitch2  = g_dipSwitch2;
+	cfg.dipSwitch0  = gDipSwitch0;
+	cfg.dipSwitch1  = gDipSwitch1;
+	cfg.dipSwitch2  = gDipSwitch2;
 	cfg.scaling     = gScaling&1;
 	cfg.flicker     = gFlicker&1;
 	cfg.gammaValue  = gGammaValue;

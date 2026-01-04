@@ -17,7 +17,7 @@
 	.syntax unified
 	.arm
 
-	.section .ewram,"ax"
+	.section .ewram, "ax", %progbits
 	.align 2
 ;@----------------------------------------------------------------------------
 run:						;@ Return after X frame(s)
@@ -67,7 +67,7 @@ capcomFrameLoop:
 	b capcomEnd
 ;@----------------------------------------------------------------------------
 
-	.section .ewram,"ax"
+	.section .ewram, "ax", %progbits
 capcomEnd:
 	add r0,z80ptr,#z80Regs
 	stmia r0,{z80f-z80pc,z80sp}	;@ Save Z80 state

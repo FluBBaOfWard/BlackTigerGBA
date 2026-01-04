@@ -74,7 +74,7 @@ ROM_Space:
 	.incbin "blktiger/bd-09.8a"
 */
 
-	.section .ewram,"ax"
+	.section .ewram, "ax", %progbits
 	.align 2
 ;@----------------------------------------------------------------------------
 machineInit: 	;@ Called from C
@@ -174,7 +174,7 @@ cacheRomPages:				;@ r0=start page, r1=page count
 	stmfd sp!,{r3-r6,lr}
 	mov r4,r1					;@ Length
 	ldr r5,=MEMMAPTBL_
-	ldr r6,=cpuCache			;@ Destination
+	ldr r6,=romCache			;@ Destination
 	add r5,r5,r0,lsl#2
 moveLoop:
 	ldr r1,[r5]					;@ Source
@@ -273,14 +273,14 @@ vromBase2:
 	.long 0
 	.pool
 
-	.section .sbss
+	.section .sbss				;@ This is EWRAM on GBA with devkitARM
 WRMEMTBL_:
 	.space 256*4
 RDMEMTBL_:
 	.space 256*4
 MEMMAPTBL_:
 	.space 256*4
-cpuCache:
+romCache:
 	.space 0x8000
 testState:
 	.space 0x7010+0x48

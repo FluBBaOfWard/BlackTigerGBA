@@ -1,4 +1,4 @@
-# BlackTigerGBA V0.1.6
+# BlackTigerGBA V0.2.1
 
 This is a Black Tiger / Black Dragon - Arcade emulator for the GBA.
 
@@ -67,7 +67,7 @@ Some dumb info about the game and emulator...
 ### Sleep
 
 Put the GBA into sleepmode. START+SELECT wakes up from sleep mode (activated
- from this menu or from	5/10/30	minutes of inactivity).
+ from this menu or from 5/10/30 minutes of inactivity).
 
 ### Restart
 
@@ -86,6 +86,8 @@ MAME team for driver info.
 
 Fredrik Ahlström
 
-Twitter @TheRealFluBBa
+<https://bsky.app/profile/therealflubba.bsky.social>
 
-http://www.github.com/FluBBaOfWard
+<https://www.github.com/FluBBaOfWard>
+
+X/Twitter @TheRealFluBBa
