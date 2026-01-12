@@ -13,7 +13,7 @@
 #include "ARMZ80/Version.h"
 #include "BlackTigerVideo/Version.h"
 
-#define EMUVERSION "V0.2.1 2026-01-04"
+#define EMUVERSION "V0.2.1 2026-01-12"
 
 static void scalingSet(void);
 static const char *getScalingText(void);

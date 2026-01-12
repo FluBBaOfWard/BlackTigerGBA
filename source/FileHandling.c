@@ -102,16 +102,17 @@ bool loadRoms(int game, bool doLoad) {
 
 	for (i=0; i<count; i++) {
 		found = false;
-		if ( (file = fopen(romFilenames[game][i], "r")) ) {
+		if ((file = fopen(romFilenames[game][i], "r"))) {
 			if (doLoad) {
 				fread(romArea, 1, romFilesizes[game][i], file);
 				romArea += romFilesizes[game][i];
 			}
 			fclose(file);
 			found = true;
-		} else {
+		}
+		else {
 			for (j=0; j<GAMECOUNT; j++) {
-				if ( !(findFileInZip(gameZipNames[j], romFilenames[game][i])) ) {
+				if (!(findFileInZip(gameZipNames[j], romFilenames[game][i]))) {
 					if (doLoad) {
 						loadFileInZip(romArea, gameZipNames[j], romFilenames[game][i], romFilesizes[game][i]);
 						romArea += romFilesizes[game][i];
