@@ -1,6 +1,8 @@
 #ifndef EMUBASE
 #define EMUBASE
 
+#define BTAID 0x1A415442		// "BTA",0x1A - Black Tiger Arcade
+
 typedef struct {
 	const u32 identifier;
 	const u32 filesize;
@@ -24,6 +26,6 @@ typedef struct {				//(config struct)
 	u8 gammaValue;				//from gfx.s
 	u8 controller;				//from io.s
 	char currentPath[256];
-} configdata;
+} ConfigData;
 
 #endif // EMUBASE

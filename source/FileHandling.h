@@ -7,6 +7,7 @@ extern "C" {
 
 #define FILEEXTENSIONS ".zip"
 
+void initSettings(void);
 int loadSettings(void);
 void saveSettings(void);
 int loadNVRAM(void);

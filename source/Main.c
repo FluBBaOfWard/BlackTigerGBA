@@ -2,8 +2,10 @@
 
 #include "Main.h"
 #include "Shared/EmuMenu.h"
+#include "Shared/FileHelper.h"
 #include "Shared/AsmExtra.h"
 #include "Gui.h"
+#include "FileHandling.h"
 #include "EmuFont.h"
 #include "Cart.h"
 #include "cpu.h"
@@ -44,23 +46,25 @@ void myVBlank(void) {
 int main(int argc, char **argv) {
 //---------------------------------------------------------------------------------
 	irqInit();
-
-	irqSet( IRQ_VBLANK, myVBlank );
 	irqEnable(IRQ_VBLANK);
+	showSplash(getSplashScreen(BTAID));
+	irqSet(IRQ_VBLANK, myVBlank);
 
 	setupGraphics();
 	setupGUI();
 	getInput();
+	initSettings();
+	loadSettings();
 	machineInit();
 	loadCart(0,0);
 
 	while (1) {
 		waitVBlank();
-//		checkTimeOut();
 		guiRunLoop();
 		if (!pauseEmulation) {
 			run();
 		}
+//		checkTimeOut();
 	}
 }
 
